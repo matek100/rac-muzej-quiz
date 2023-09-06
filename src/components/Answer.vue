@@ -10,6 +10,7 @@ export default {
   data() {
     return {
       store,
+      isClicked : false,
     };
   },
 };
@@ -18,11 +19,11 @@ export default {
 <template>
   <button
     class="w-full bg-gray-200 rounded-lg p-4 transition md:text-lg md:p-6"
-    @click="store.checkAnswer(text)"
+    @click="store.checkAnswer(text); this.isClicked = true"
     v-html="text"
     :disabled="store.showAnswer"
     :class="{
-      'bg-red-200': store.showAnswer && isInvalidAnswer,
+      'bg-red-200': store.showAnswer && isInvalidAnswer && isClicked,
       'bg-green-200': store.showAnswer && isValidAnswer,
       'hover:bg-gray-300': !store.showAnswer,
     }"
